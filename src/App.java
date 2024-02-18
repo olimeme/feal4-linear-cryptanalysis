@@ -1,4 +1,4 @@
-// This assignment will involve implementing a linear cryptanalysis attack on the weak block 
+
 // cipher FEAL-4,as described in the course,to find the six secret sub-keys that have been used.
 // This is a VERY hard assignment and will take a considerable amount of time,so please start working 
 // on it as soon as possible.
@@ -17,8 +17,42 @@
 //   report describing how you went about the cryptanalysis and the results obtained through the Loop page 
 //   for this module by 10 am Monday 29 th July.
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class App {
+
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        int pairs = 200;
+        String plaintext[] = new String[pairs];
+        String cyphertext[] = new String[pairs];
+        boolean isPlainText = true;
+        // read the known.txt file
+        String fileName = "known.txt";
+        String line = null;
+        int i = 0;
+        try {
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine()) != null && i < pairs) {
+                if (line.length() < 12)
+                    continue;
+                if (isPlainText) {
+                    plaintext[i] = line.substring(12);
+                } else {
+                    cyphertext[i] = line.substring(12);
+                    i++;
+                }
+                isPlainText = !isPlainText;
+            }
+            bufferedReader.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Unable to open file '" + fileName + "'");
+        } catch (IOException ex) {
+            System.out.println("Error reading file '" + fileName + "'");
+            ex.printStackTrace();
+        }
     }
 }
