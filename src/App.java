@@ -23,11 +23,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class App {
-
     public static void main(String[] args) throws Exception {
-        int pairs = 200;
-        String plaintext[] = new String[pairs];
-        String cyphertext[] = new String[pairs];
+
         boolean isPlainText = true;
         // read the known.txt file
         String fileName = "known.txt";
@@ -36,13 +33,13 @@ public class App {
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            while ((line = bufferedReader.readLine()) != null && i < pairs) {
+            while ((line = bufferedReader.readLine()) != null && i < FEALData.PAIRS) {
                 if (line.length() < 12)
                     continue;
                 if (isPlainText) {
-                    plaintext[i] = line.substring(12);
+                    FEALData.plaintext[i] = line.substring(12, 28);
                 } else {
-                    cyphertext[i] = line.substring(12);
+                    FEALData.cyphertext[i] = line.substring(12, 28);
                     i++;
                 }
                 isPlainText = !isPlainText;
@@ -53,6 +50,11 @@ public class App {
         } catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
             ex.printStackTrace();
+        }
+
+        for (int j = 0; j < FEALData.PAIRS; j++) {
+            System.out.println(FEALData.plaintext[j]);
+            System.out.println(FEALData.cyphertext[j]);
         }
     }
 }
