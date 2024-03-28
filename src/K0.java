@@ -1,5 +1,5 @@
 public class K0 {
-    public static int calcConstInnerBytesk0(int i, int keyTilda) {
+    public static int innerBytes(int i, int keyTilda) {
         BitOperations.splitPairs(i);
         int a1 = BitOperations.getBit(FEALData.L0 ^ FEALData.R0 ^ FEALData.L4, 13);
         int a2 = BitOperations.getBit(FEALData.L0 ^ FEALData.L4 ^ FEALData.R4, 7)
@@ -13,7 +13,7 @@ public class K0 {
         return a1 ^ a2 ^ a3;
     }
 
-    public static int calcConstOutteBytesk0(int wordIndex, int key) {
+    public static int outterBytes(int wordIndex, int key) {
         BitOperations.splitPairs(wordIndex);
         int a1 = BitOperations.getBit(FEALData.L0 ^ FEALData.R0 ^ FEALData.L4, 5)
                 ^ BitOperations.getBit(FEALData.L0 ^ FEALData.R0 ^ FEALData.L4, 13)
