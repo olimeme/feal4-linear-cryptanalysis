@@ -24,9 +24,7 @@ import java.io.IOException;
 
 public class App {
     public static void main(String[] args) throws Exception {
-
         boolean isPlainText = true;
-        // read the known.txt file
         String fileName = "known.txt";
         String line = null;
         int i = 0;
@@ -56,5 +54,9 @@ public class App {
             System.out.println(FEALData.plaintext[j]);
             System.out.println(FEALData.cyphertext[j]);
         }
+        System.out.println("Starting the decryption");
+
+        K0.solveForK0();
     }
+
 }

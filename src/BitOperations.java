@@ -35,8 +35,8 @@ public class BitOperations {
         key1 = Integer.reverseBytes(key1);
         key2 = Integer.reverseBytes(key2);
         key3 = Integer.reverseBytes(key3);
-        int key4 = Integer.reverseBytes((int) FEALData.L0 ^ (int) FEALData.R0 ^ y1 ^ y3 ^ (int) FEALData.L4);
-        int key5 = Integer.reverseBytes((int) FEALData.R0 ^ y1 ^ y3 ^ y0 ^ y2 ^ (int) FEALData.R4);
+        int key4 = K4.solveForK4(y1, y3);
+        int key5 = K5.solveForK5(y0, y1, y2, y3);
 
         int key[] = { key0, key1, key2, key3, key4, key5 };
         byte[] data1 = new byte[8];
