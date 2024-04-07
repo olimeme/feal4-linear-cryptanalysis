@@ -56,11 +56,6 @@ public class BitOperations {
             if (!fealData.getPlaintext()[w].contentEquals(sb))
                 return;
         }
-
-        System.out.println("0x" + Integer.toHexString(key0) + "\t0x" +
-                Integer.toHexString(key1) + "\t0x"
-                + Integer.toHexString(key2) + "\t0x" + Integer.toHexString(key3) + "\t0x" +
-                Integer.toHexString(key4)
-                + "\t0x" + Integer.toHexString(key5));
+        FileManager.write(key0, key1, key2, key3, key4, key5);
     }
 }

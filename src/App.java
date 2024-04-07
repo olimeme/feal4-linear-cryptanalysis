@@ -23,6 +23,5 @@ public class App {
         FileManager.read("known.txt", data);
         System.out.println("Starting the decryption");
         K0.calcK0(data);
-        FileManager.write(data);
     }
 }

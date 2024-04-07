@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -31,25 +32,23 @@ public class FileManager {
             System.out.println("Error reading file '" + fileName + "'");
             ex.printStackTrace();
         }
-
-        for (i = 0; i < data.getPAIRS(); i++) {
-            System.out.println(data.getPlaintext()[i]);
-            System.out.println(data.getCiphertext()[i]);
-        }
     }
 
-    public static void write(FEALData data) {
+    public static void write(int key0, int key1, int key2, int key3, int key4, int key5) {
         try {
-            FileWriter fileWriter = new FileWriter("output.txt");
+            File outputFile = new File("output.txt");
+            FileWriter fileWriter;
+            if (outputFile.exists())
+                fileWriter = new FileWriter("output.txt", true);
+            else
+                fileWriter = new FileWriter("output.txt");
+
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (int i = 0; i < data.getPAIRS(); i++) {
-                bufferedWriter.write(data.getPlaintext()[i]);
-                bufferedWriter.newLine();
-                bufferedWriter.write(data.getCiphertext()[i]);
-                bufferedWriter.newLine();
-            }
+            bufferedWriter.write("0x" + Integer.toHexString(key0) + " 0x" + Integer.toHexString(key1) + " 0x"
+                    + Integer.toHexString(key2) + " 0x" + Integer.toHexString(key3) + " 0x"
+                    + Integer.toHexString(key4) + " 0x" + Integer.toHexString(key5));
+            bufferedWriter.newLine();
             bufferedWriter.close();
-            System.out.println("Results written to output.txt");
         } catch (IOException ex) {
             System.out.println("Error writing to file");
             ex.printStackTrace();
