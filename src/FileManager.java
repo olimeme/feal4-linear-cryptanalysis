@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileManager {
@@ -37,6 +39,20 @@ public class FileManager {
     }
 
     public static void write(FEALData data) {
-
+        try {
+            FileWriter fileWriter = new FileWriter("output.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (int i = 0; i < data.getPAIRS(); i++) {
+                bufferedWriter.write(data.getPlaintext()[i]);
+                bufferedWriter.newLine();
+                bufferedWriter.write(data.getCiphertext()[i]);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+            System.out.println("Results written to output.txt");
+        } catch (IOException ex) {
+            System.out.println("Error writing to file");
+            ex.printStackTrace();
+        }
     }
 }
