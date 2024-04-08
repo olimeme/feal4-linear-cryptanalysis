@@ -21,7 +21,8 @@ public class App {
     public static void main(String[] args) throws Exception {
         FEALData data = new FEALData();
         FileManager.read("known.txt", data);
-        System.out.println("Starting the decryption");
+        System.out.println("Decrypting...");
         K0.calcK0(data);
+        System.out.println("Output written to output.txt");
     }
 }
