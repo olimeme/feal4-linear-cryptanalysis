@@ -7,7 +7,7 @@ public class K0 {
                     ^ BitOperations.getBit(data.getL0() ^ data.getR0() ^ data.getL4(), 13)
                     ^ BitOperations.getBit(data.getL0() ^ data.getR0() ^ data.getL4(), 21)
                     ^ BitOperations.getBit(data.getL0() ^ data.getL4() ^ data.getR4(), 15)
-                    ^ BitOperations.getBit(BitOperations.f(data.getL0() ^ data.getR0() ^ keyTilda), 15);
+                    ^ BitOperations.getBit(FEAL.f(data.getL0() ^ data.getR0() ^ keyTilda), 15);
 
             for (int w1 = 1; w1 < data.getPAIRS(); w1++) {
                 BitOperations.splitPairs(w1, data);
@@ -15,7 +15,7 @@ public class K0 {
                         ^ BitOperations.getBit(data.getL0() ^ data.getR0() ^ data.getL4(), 13)
                         ^ BitOperations.getBit(data.getL0() ^ data.getR0() ^ data.getL4(), 21)
                         ^ BitOperations.getBit(data.getL0() ^ data.getL4() ^ data.getR4(), 15)
-                        ^ BitOperations.getBit(BitOperations.f(data.getL0() ^ data.getR0() ^ keyTilda), 15);
+                        ^ BitOperations.getBit(FEAL.f(data.getL0() ^ data.getR0() ^ keyTilda), 15);
                 if (firstA1 != first)
                     break;
 
@@ -23,7 +23,7 @@ public class K0 {
                     for (int k2 = 0; k2 < 1048576; k2++) {
                         int key0 = BitOperations.generate20BitKeyForOuterBytes(k2, keyTilda);
                         BitOperations.splitPairs(0, data);
-                        int y0 = BitOperations.f(data.getL0() ^ data.getR0() ^ key0);
+                        int y0 = FEAL.f(data.getL0() ^ data.getR0() ^ key0);
                         int firstA2 = BitOperations.getBit(data.getL0() ^ data.getR0() ^ data.getL4(), 13)
                                 ^ BitOperations.getBit(data.getL0() ^ data.getL4() ^ data.getR4(), 7)
                                 ^ BitOperations.getBit(data.getL0() ^ data.getL4() ^ data.getR4(), 15)
@@ -35,7 +35,7 @@ public class K0 {
 
                         for (int w2 = 1; w2 < data.getPAIRS(); w2++) {
                             BitOperations.splitPairs(w2, data);
-                            y0 = BitOperations.f(data.getL0() ^ data.getR0() ^ key0);
+                            y0 = FEAL.f(data.getL0() ^ data.getR0() ^ key0);
                             int last = BitOperations.getBit(data.getL0() ^ data.getR0() ^ data.getL4(), 13)
                                     ^ BitOperations.getBit(data.getL0() ^ data.getL4() ^ data.getR4(), 7)
                                     ^ BitOperations.getBit(data.getL0() ^ data.getL4() ^ data.getR4(), 15)

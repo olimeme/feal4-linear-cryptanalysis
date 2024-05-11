@@ -4,10 +4,6 @@ public class BitOperations {
         return (num >> (31 - n)) & 1;
     }
 
-    public static int f(int num) {
-        return (FEAL.f((num)));
-    }
-
     public static int generate12BitKeyForInnerBytes(int k) {
         return (((k >> 6) & 0x3F) << 16) + ((k & 0x3F) << 8);
     }
@@ -31,10 +27,10 @@ public class BitOperations {
     }
 
     public static void validate(int key0, int key1, int key2, int key3, FEALData fealData) {
-        int y0 = BitOperations.f(fealData.getL0() ^ fealData.getR0() ^ key0);
-        int y1 = BitOperations.f(fealData.getL0() ^ y0 ^ key1);
-        int y2 = BitOperations.f(fealData.getL0() ^ fealData.getR0() ^ y1 ^ key2);
-        int y3 = BitOperations.f(fealData.getL0() ^ y0 ^ y2 ^ key3);
+        int y0 = FEAL.f(fealData.getL0() ^ fealData.getR0() ^ key0);
+        int y1 = FEAL.f(fealData.getL0() ^ y0 ^ key1);
+        int y2 = FEAL.f(fealData.getL0() ^ fealData.getR0() ^ y1 ^ key2);
+        int y3 = FEAL.f(fealData.getL0() ^ y0 ^ y2 ^ key3);
 
         int key4 = fealData.getL0() ^ fealData.getR0() ^ y1 ^ y3 ^ fealData.getL4();
         int key5 = fealData.getR0() ^ y1 ^ y3 ^ y0 ^ y2 ^ fealData.getR4();
